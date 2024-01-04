@@ -1,0 +1,6 @@
+#include "Generated.xcconfig"
+
+FLUTTER_TARGET=lib/main_env_dev.dart
+ASSET_PREFIX=env_dev
+BUNDLE_NAME=模板工程(测试)
+BUNDLE_DISPLAY_NAME=模板工程(测试)

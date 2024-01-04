@@ -1,0 +1,6 @@
+#include "Generated.xcconfig"
+
+FLUTTER_TARGET=lib/main_env_release.dart
+ASSET_PREFIX=env_release
+BUNDLE_NAME=模板工程
+BUNDLE_DISPLAY_NAME=模板工程
