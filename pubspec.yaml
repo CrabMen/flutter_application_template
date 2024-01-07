@@ -36,6 +36,29 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  flutter_screenutil: 5.7.0 # 屏幕适配
+
+  get: 4.6.5 #状态管理 路由
+  flutter_easyloading: 3.0.5
+
+  flutter_native_splash: 2.2.19 #原生启动图
+
+  flutter_launcher_icons: 0.13.1 #icon
+
+  dio: 5.4.0 #网络请求
+
+  logger: 2.0.2+1  # 终端打印
+
+  cached_network_image: 3.2.3  #图片加载
+
+  shared_preferences: 2.2.2
+
+  package_info_plus: ^4.2.0
+
+  device_info_plus: ^9.1.1
+
+  introduction_screen: ^3.1.8
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -88,6 +111,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
 flavorizr:
   flavors:
     env_dev:
@@ -95,6 +119,11 @@ flavorizr:
         name: "模板工程(测试)"
       android:
         applicationId: "com.template.android"
+        customConfig:
+          minSdkVersion: 33
+          targetSdkVersion: 34
+          versionCode: 100
+          versionName: "1.0.0"
       ios:
         bundleId: "com.template.ios"
       macos:
@@ -105,6 +134,11 @@ flavorizr:
         name: "模板工程"
       android:
         applicationId: "com.template.android"
+        customConfig:
+          minSdkVersion: 33
+          targetSdkVersion: 34
+          versionCode: 100
+          versionName: "1.0.0"
       ios:
         bundleId: "com.template.ios"
       macos:
