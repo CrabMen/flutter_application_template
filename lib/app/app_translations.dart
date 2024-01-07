@@ -15,7 +15,8 @@ class AppTranslations extends Translations {
 
 //翻译的所有键值
 abstract class AppLocaleKeys {
-  static const home = 'home_key';
+  static const home = 'home';
+  static const discovery = 'discovery';
   static const my = 'my';
   static const login = 'login';
   static const logout = 'logout';
@@ -29,6 +30,7 @@ abstract class AppLocaleKeys {
 abstract class AppLocales  {
   static const en_EN = {
     AppLocaleKeys.home: 'Login',
+    AppLocaleKeys.discovery: 'Discovery',
     AppLocaleKeys.my: 'Sign-in',
     AppLocaleKeys.login: 'Login',
     AppLocaleKeys.logout: 'Log Out',
@@ -41,6 +43,7 @@ abstract class AppLocales  {
   };
   static const zh_CN = {
     AppLocaleKeys.home: '首页',
+    AppLocaleKeys.discovery: '发现',
     AppLocaleKeys.my: '我的',
     AppLocaleKeys.login: '登录',
     AppLocaleKeys.logout: '退出登录',

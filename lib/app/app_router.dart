@@ -10,7 +10,7 @@ import 'package:flutter_application_template/pages/login/introduction_page.dart'
 
 import 'package:flutter_application_template/pages/my/my_page.dart';
 import 'package:flutter_application_template/pages/my/setting_page.dart';
-import 'package:flutter_application_template/pages/tabNav/TabNavigationPage.dart';
+import 'package:flutter_application_template/pages/tabNav/tab_navigation_page.dart';
 import 'package:get/get.dart';
 
 abstract class AppRouter{
@@ -55,12 +55,11 @@ abstract class AppRouter{
     ),
     GetPage(
         name: homePage,
-        page: () => HomePage(),
-        transition: Transition.rightToLeft),
+        page: () => HomePage()
+    ),
     GetPage(
       name: myPage,
       page: () => MyPage(),
-      transition: Transition.rightToLeft
     ),
     GetPage(
         name: settingPage,

@@ -39,6 +39,7 @@ dependencies:
   flutter_screenutil: 5.7.0 # 屏幕适配
 
   get: 4.6.5 #状态管理 路由
+
   flutter_easyloading: 3.0.5
 
   flutter_native_splash: 2.2.19 #原生启动图
@@ -50,6 +51,10 @@ dependencies:
   logger: 2.0.2+1  # 终端打印
 
   cached_network_image: 3.2.3  #图片加载
+
+  marquee: ^2.2.3  #跑马灯效果
+
+  carousel_slider: ^4.2.1 #轮播
 
   shared_preferences: 2.2.2
 
