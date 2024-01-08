@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_template/app/constants.dart';
 import 'package:flutter_application_template/native/native_channel.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,6 @@ class LoginPageController extends GetxController {
   var userName = ''.obs;
 
   var password = ''.obs;
-
 
 
 }
@@ -38,7 +38,6 @@ class LoginPage extends StatelessWidget {
   bool get countDownEnable => counter.value == 60;
 
   String get countDownText => countDownEnable ? '发送验证码' : '${counter.value}s';
-
 
   @override
   Widget build(BuildContext context) {

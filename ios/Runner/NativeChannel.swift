@@ -9,12 +9,16 @@ import Foundation
 import Flutter
 class NativeChannel {
     
+    static var channelName = "NativeChannel";
+    static var channel = FlutterMethodChannel(name: channelName, binaryMessenger: (keyWindow!.rootViewController as! FlutterViewController).binaryMessenger)
+    
     static func launch() -> Void {
         
-        let controller : FlutterViewController = keyWindow!.rootViewController as! FlutterViewController;
+//        let controller : FlutterViewController = keyWindow!.rootViewController as! FlutterViewController;
         
-        let channel = FlutterMethodChannel(name: "NativeChannel", binaryMessenger: controller.binaryMessenger)
+//        let channel = FlutterMethodChannel(name: "NativeChannel", binaryMessenger: controller.binaryMessenger)
     
+        
         channel.setMethodCallHandler { call ,result in
             if(call.method == "showAlert"){
                 showAlert(call: call, result: result);
@@ -38,6 +42,7 @@ class NativeChannel {
         
         let okAction = UIAlertAction(title: "确定", style: .default) { (_) in
            print("原生点击了确定")
+            
            result("用户点击了确定按钮哟")
 
         }
