@@ -12,6 +12,7 @@ class DiscoveryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Center(child: Text('发现'))),
       body: Container(
           alignment: Alignment.center,
           child: Text('发现')),

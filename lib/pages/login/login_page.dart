@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_template/native/native_channel.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_template/app/app_life.dart';
@@ -25,6 +26,7 @@ class LoginPageController extends GetxController {
 
 class LoginPage extends StatelessWidget {
   final controller = Get.put(LoginPageController());
+  final native = Get.put(NativeChannel());
 
   var isChecked = false.obs;
 
@@ -57,6 +59,8 @@ class LoginPage extends StatelessWidget {
                 _buildLoginButton(),
                 SizedBox(height: 20),
                 _buildGuestLoginButton(),
+                SizedBox(height: 20),
+                _buildNativeMethodButton(),
               ]
           )
       ),
@@ -202,4 +206,16 @@ class LoginPage extends StatelessWidget {
         },
         child: Text('暂不登录 随便看看'));
   }
+
+  _buildNativeMethodButton() {
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            fixedSize: Size(double.maxFinite, 50),
+            backgroundColor:Colors.yellowAccent),
+        onPressed: () {
+          native.callNativeMethod();
+        },
+        child: Text('调用原生方法'));
+  }
+
 }

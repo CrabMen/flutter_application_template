@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
     return  Scaffold(
       key: controller._scaffoldKey,
       drawer: drawer,
-      appBar: AppBar(title:const Center(child: Text('首页'))),
+      appBar: AppBar(leading:IconButton(icon:Icon(Icons.smoke_free),onPressed: ()=>controller.openDrawer(),) ,title:const Center(child: Text('首页'))),
       body: Column(children: [
         noticeView,
         bannerView,
