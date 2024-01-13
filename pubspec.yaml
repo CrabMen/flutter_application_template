@@ -42,6 +42,8 @@ dependencies:
 
   flutter_easyloading: 3.0.5
 
+  fluttertoast: ^8.2.4
+
   flutter_native_splash: 2.2.19 #原生启动图
 
   flutter_launcher_icons: 0.13.1 #icon
@@ -63,6 +65,8 @@ dependencies:
   device_info_plus: ^9.1.1
 
   introduction_screen: ^3.1.8
+
+  custom_refresh_indicator: ^3.0.0
 
 dev_dependencies:
   flutter_test:

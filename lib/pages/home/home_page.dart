@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_template/http/http_utils.dart';
 import 'package:flutter_application_template/main.dart';
+import 'package:flutter_application_template/native/native_channel.dart';
 import 'package:get/get.dart';
 import 'package:marquee/marquee.dart';
 
@@ -22,6 +24,7 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   final controller = Get.put(HomePageController());
+  final native = Get.put(NativeChannel());
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +49,7 @@ class HomePage extends StatelessWidget {
           enlargeCenterPage:true,
           enlargeFactor:0.2,
           height: 200.0,
+          autoPlayInterval: Duration(seconds: 2),
           autoPlay: true,
         ));
 
@@ -58,13 +62,37 @@ class HomePage extends StatelessWidget {
           itemCount: titles.length),
     );
 
+
+    var nativeMethodWidtget = ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            fixedSize:const Size(300, 50),
+            backgroundColor:Colors.red),
+        onPressed: () {
+          native.callNativeMethod();
+        },
+        child:const Text('调用原生方法'));
+
+    var requestWidtget = ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            fixedSize:const Size(300, 50),
+            backgroundColor:Colors.green),
+        onPressed: () {
+          HttpUtils.get(path: 'v2/user/check');
+        },
+        child:const Text('网络请求'));
+
+
     return  Scaffold(
       key: controller._scaffoldKey,
       drawer: drawer,
-      appBar: AppBar(leading:IconButton(icon:Icon(Icons.smoke_free),onPressed: ()=>controller.openDrawer(),) ,title:const Center(child: Text('首页'))),
+      appBar: AppBar(leading:IconButton(icon:Icon(Icons.smoke_free),onPressed: ()=>controller.openDrawer(),) ,centerTitle: true,title:Text('首页')),
       body: Column(children: [
         noticeView,
         bannerView,
+        const SizedBox(height: 20),
+        nativeMethodWidtget,
+        const SizedBox(height: 20),
+        requestWidtget,
       ]),
     );
 

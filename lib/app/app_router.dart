@@ -49,9 +49,8 @@ abstract class AppRouter{
     GetPage(
         name: loginPage,
         page: () => LoginPage(),
-        transition: Transition.fadeIn,
+        transition: Transition.downToUp,
         middlewares: [IntroductionMiddleware()],
-
     ),
     GetPage(
         name: homePage,

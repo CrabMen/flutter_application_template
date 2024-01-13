@@ -10,6 +10,7 @@ import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app/app_translations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 late SharedPreferences storage;
 var logger = Logger();
@@ -77,7 +78,20 @@ class MyApp extends StatelessWidget {
             initialRoute: AppRouter.loginPage,
             getPages: AppRouter.getPages,
             routingCallback: (routing) {},
-            builder: EasyLoading.init(),
+            // builder: EasyLoading.init(builder: FToastBuilder()),
+            builder: (context, child) {
+              child = EasyLoading.init()(context,child);
+              // child = FToastBuilder()(context,child);
+              return child;
+            },
+
+            // builder:(BuildContext context, Widget? child) {
+            //   EasyLoading.instance
+            //   ..indicatorWidget = Icon(Icons.warning,color: Colors.white,size: 20)
+            //   ..userInteractions = false
+            //   ..backgroundColor = Colors.black26;
+            //   return FlutterEasyLoading(child: child);
+            // },
           );
         });
   }
