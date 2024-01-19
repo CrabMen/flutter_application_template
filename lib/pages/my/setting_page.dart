@@ -141,7 +141,7 @@ final SettingPageController settingController = Get.put(SettingPageController())
   }
 
   _showLanguagesSheet() {
-    List languages = ['中文', 'English', 'Japanese'];
+    List languages = AppTranslations.languagesMap.keys.toList();
 
     Get.bottomSheet(BottomSheet(
       constraints: const BoxConstraints(maxHeight: 200),
@@ -151,7 +151,8 @@ final SettingPageController settingController = Get.put(SettingPageController())
               itemCount: languages.length,
               itemBuilder: (context, index) =>
                   ListTile(title: Text(languages[index]), onTap: () {
-                    _switchLanguage(index);
+                    _switchLanguage(languages[index]);
+
                   },),
               separatorBuilder: (context, index) =>
               const Divider(color: Colors.grey, height: 1)),
@@ -159,19 +160,10 @@ final SettingPageController settingController = Get.put(SettingPageController())
   }
 
 
-  _switchLanguage(int index) {
-    EasyLoading.showInfo('切换语言$index');
-    switch (index) {
-      case 0:
-        Get.updateLocale(Locale('zh', 'CN'));
-        break;
-      case 1:
-        Get.updateLocale(Locale('en', 'EN'));
-        break;
-      case 2:
-        Get.updateLocale(Locale('ja', 'JP'));
-        break;
-    }
+  _switchLanguage(String language) {
+    EasyLoading.showInfo('切换语言$language');
+
+    Get.updateLocale(AppTranslations.locale(language));
 
     Get.back();
   }

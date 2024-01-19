@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:get/get.dart';
 
 /// 数组中的字符串 尽量 放在build 方法内部
@@ -5,13 +7,24 @@ import 'package:get/get.dart';
 
 class AppTranslations extends Translations {
   @override
-  Map<String, Map<String, String>> get keys => {
-    'zh_CN': AppLocales.zh_CN,
-    'en_EN': AppLocales.en_EN,
+  Map<String, Map<String, String>> get keys =>
+      {
+        'zh_CN': AppLocales.zh_CN,
+        'en_EN': AppLocales.en_EN,
+      };
+
+
+  static Map<String, Locale> languagesMap = {
+    '中文': const Locale('zh', 'CN'),
+    'English':const Locale('en', 'EN'),
+    'Japanese':const Locale('ja', 'JP'),
   };
 
-}
+  static Locale locale(String language) {
+    return languagesMap[language] ?? languagesMap["中文"]!;
+  }
 
+}
 
 //翻译的所有键值
 abstract class AppLocaleKeys {
