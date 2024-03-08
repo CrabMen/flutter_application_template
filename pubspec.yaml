@@ -68,6 +68,9 @@ dependencies:
 
   easy_refresh: ^3.3.4
 
+  qr_flutter: ^4.0.0 #生成二维码
+  mobile_scanner: 3.5.5 #扫描二维码
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

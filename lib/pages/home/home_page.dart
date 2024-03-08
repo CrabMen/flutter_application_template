@@ -1,10 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_template/app/app_router.dart';
 import 'package:flutter_application_template/http/http_utils.dart';
 import 'package:flutter_application_template/main.dart';
 import 'package:flutter_application_template/native/native_channel.dart';
 import 'package:get/get.dart';
 import 'package:marquee/marquee.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 
 class HomePageController extends GetxController {
 
@@ -82,10 +84,29 @@ class HomePage extends StatelessWidget {
         child:const Text('网络请求'));
 
 
+
     return  Scaffold(
       key: controller._scaffoldKey,
       drawer: drawer,
-      appBar: AppBar(leading:IconButton(icon:Icon(Icons.smoke_free),onPressed: ()=>controller.openDrawer(),) ,centerTitle: true,title:Text('首页')),
+      appBar: AppBar(
+          leading: IconButton(
+            icon:const Icon(Icons.smoke_free),
+            onPressed: () => controller.openDrawer()     ,
+          ),
+          actions: [
+            PopupMenuButton(
+              child: Row(children: [Icon(Icons.add), SizedBox(width: 10)]),
+              offset: Offset(0,50),
+              itemBuilder: (_) => [
+                const PopupMenuItem(child: Text('扫一扫'), value: "扫一扫"),
+              ],
+              onSelected: (value) {
+                Get.toNamed(AppRouter.scanCodePage);
+              },
+            ),
+          ],
+          centerTitle: true,
+          title: Text('首页')),
       body: Column(children: [
         noticeView,
         bannerView,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_template/app/app_life.dart';
 import 'package:flutter_application_template/app/app_theme.dart';
@@ -7,7 +8,7 @@ import '../../app/app_translations.dart';
 import 'package:flutter_application_template/app/app_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'dart:io';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class SettingPageController extends GetxController {
 
@@ -83,6 +84,8 @@ final SettingPageController settingController = Get.put(SettingPageController())
                   onTap: _logout,
                 ),
               )),
+
+         Align(child: QrImage(data: "flutter_application_template",size: 200.w)) ,
         ]));
   }
 

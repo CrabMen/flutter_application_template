@@ -13,19 +13,10 @@ class MyPage extends StatelessWidget {
       appBar: AppBar(title: Center(child:Text('我的'))),
       body: Stack(children: [
       Positioned(top:20,right:20,child: GestureDetector(child: Icon(Icons.settings),
-        onTap: () => Get.toNamed(AppRouter.settingPage)))
-
+        onTap: () => Get.toNamed(AppRouter.settingPage))),
+        Positioned(top:100,right:20,child: GestureDetector(child: Icon(Icons.feedback),
+            onTap: () => Get.toNamed(AppRouter.feedbackPage)))
       ]),
-      // body: Container(
-      //     alignment: Alignment.center,
-      //     child: ElevatedButton(
-      //     style: ElevatedButton.styleFrom(
-      //         fixedSize: Size(150, 50),
-      //         backgroundColor:Colors.blue),
-      //     onPressed: () {
-      //       Get.toNamed(AppRouter.settingPage);
-      //     },
-      //     child: Text('设置'))),
     );
 
   }

@@ -5,8 +5,10 @@ import 'package:flutter_application_template/app/app_middlewares.dart';
 import 'package:flutter_application_template/app/app_theme.dart';
 
 import 'package:flutter_application_template/pages/home/home_page.dart';
+import 'package:flutter_application_template/pages/home/scan_code_page.dart';
 import 'package:flutter_application_template/pages/login/login_page.dart';
 import 'package:flutter_application_template/pages/login/introduction_page.dart';
+import 'package:flutter_application_template/pages/my/feedback_page.dart';
 
 import 'package:flutter_application_template/pages/my/my_page.dart';
 import 'package:flutter_application_template/pages/my/setting_page.dart';
@@ -18,9 +20,12 @@ abstract class AppRouter{
   static  String introductionPage = '/introductionPage';
   static  String loginPage = '/loginPage';
   static  String homePage = '/homePage';
+  static  String scanCodePage = '/scanCodePage';
+
   static  String myPage = '/myPage';
   static  String root = '/root';
   static  String settingPage = '/settingPage';
+  static  String feedbackPage = '/feedbackPage';
 
 
 
@@ -57,6 +62,10 @@ abstract class AppRouter{
         page: () => HomePage()
     ),
     GetPage(
+      name: scanCodePage,
+      page: () => ScanCodePage(),
+    ),
+    GetPage(
       name: myPage,
       page: () => MyPage(),
     ),
@@ -66,8 +75,13 @@ abstract class AppRouter{
         transition: Transition.rightToLeft,
         middlewares: [LoginMiddleware()],
         binding: BindingsBuilder.put(() => AppTheme(),permanent: true),
-
-
     ),
+
+    GetPage(
+      name: feedbackPage,
+      page: () => FeedbackPage(),
+    ),
+
+
   ];
 }
