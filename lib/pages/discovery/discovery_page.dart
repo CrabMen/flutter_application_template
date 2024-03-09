@@ -2,6 +2,7 @@ import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_template/app/constants.dart';
 import 'package:flutter_application_template/base/base_list_view.dart';
+import 'package:flutter_application_template/base/base_page.dart';
 import 'package:flutter_application_template/http/api.dart';
 import 'package:flutter_application_template/http/http_utils.dart';
 import 'package:flutter_application_template/main.dart';
@@ -19,16 +20,16 @@ class DiscoveryPageController extends GetxController {
 }
 
 
-class DiscoveryPage extends StatelessWidget{
+class DiscoveryPage extends BasePage{
 
-  DiscoveryPageController controller = Get.put(DiscoveryPageController());
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title:const Center(child: Text('发现'))),
-      body: DiscoveryList(),
-    );
+  String get navigatorTitle => "发现";
+
+  @override
+  Widget buildBody(BuildContext context) {
+    Get.put(DiscoveryPageController());
+    return DiscoveryList();
   }
 
 

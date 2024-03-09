@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_template/base/base_page.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -18,14 +19,18 @@ class SettingPageController extends GetxController {
 
 }
 
-class SettingPage extends StatelessWidget {
+class SettingPage extends BasePage {
 
 final AppTheme appTheme = Get.put(AppTheme());
 final SettingPageController settingController = Get.put(SettingPageController());
 
 
+
   @override
-  Widget build(BuildContext context) {
+  String get navigatorTitle => AppLocaleKeys.setting.tr;
+
+  @override
+  Widget buildBody(BuildContext context) {
 
     _showThemeSheet(){
 
@@ -47,46 +52,44 @@ final SettingPageController settingController = Get.put(SettingPageController())
 
     }
 
-    return Scaffold(
-        appBar:
-            AppBar(title: Text(AppLocaleKeys.setting.tr), centerTitle: true),
-        body: ListView(children: [
-          ListTile(
-            title: Text(AppLocaleKeys.language.tr),
+    return
+      ListView(children: [
+        ListTile(
+          title: Text(AppLocaleKeys.language.tr),
+          trailing: Icon(Icons.arrow_forward_ios),
+          onTap: _showLanguagesSheet,
+        ),
+        Obx(() {
+          return ListTile(
+            title: Text(AppLocaleKeys.darkMode.tr),
+            subtitle: Text(appTheme.themeName.value),
             trailing: Icon(Icons.arrow_forward_ios),
-            onTap: _showLanguagesSheet,
-          ),
-          Obx(() {
-            return ListTile(
-              title: Text(AppLocaleKeys.darkMode.tr),
-              subtitle: Text(appTheme.themeName.value),
-              trailing: Icon(Icons.arrow_forward_ios),
-              onTap: _showThemeSheet,
-            );
-          }),
+            onTap: _showThemeSheet,
+          );
+        }),
 
-          ListTile(
-            title: Text('应用信息'),
+        ListTile(
+          title: Text('应用信息'),
+          trailing: Icon(Icons.arrow_forward_ios),
+          onTap: _showAppInfo,
+        ),
+
+        ListTile(
+          title: Text('设备信息'),
+          trailing: Icon(Icons.arrow_forward_ios),
+          onTap: _showDeviceInfo,
+        ),
+        Obx(() => Offstage(
+          offstage: !settingController.isLogged.value,
+          child: ListTile(
+            title: Text(AppLocaleKeys.logout.tr),
             trailing: Icon(Icons.arrow_forward_ios),
-            onTap: _showAppInfo,
+            onTap: _logout,
           ),
+        )),
 
-          ListTile(
-            title: Text('设备信息'),
-            trailing: Icon(Icons.arrow_forward_ios),
-            onTap: _showDeviceInfo,
-          ),
-          Obx(() => Offstage(
-                offstage: !settingController.isLogged.value,
-                child: ListTile(
-                  title: Text(AppLocaleKeys.logout.tr),
-                  trailing: Icon(Icons.arrow_forward_ios),
-                  onTap: _logout,
-                ),
-              )),
-
-         Align(child: QrImage(data: "flutter_application_template",size: 200.w)) ,
-        ]));
+        Align(child: QrImage(data: "flutter_application_template",size: 200.w)) ,
+      ]);
   }
 
 

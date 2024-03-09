@@ -1,16 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_template/app/constants.dart';
-import 'package:flutter_application_template/native/native_channel.dart';
+import 'package:flutter_application_template/base/base_page.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:flutter_application_template/app/app_life.dart';
 import 'package:flutter_application_template/app/app_router.dart';
 import 'package:flutter_application_template/models/user_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../main.dart';
 
 class LoginPageController extends GetxController {
@@ -19,13 +15,9 @@ class LoginPageController extends GetxController {
   var userName = ''.obs;
 
   var password = ''.obs;
-
-
 }
 
-
-class LoginPage extends StatelessWidget {
-  final controller = Get.put(LoginPageController());
+class LoginPage extends BasePage<LoginPageController> {
 
   var isChecked = false.obs;
 
@@ -38,30 +30,35 @@ class LoginPage extends StatelessWidget {
 
   String get countDownText => countDownEnable ? '发送验证码' : '${counter.value}s';
 
+
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('登录')),
-      body: Container(
-          color: Colors.white,
-          alignment: Alignment.center,
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildAccountView(),
-                _buildPasswordView(),
-                SizedBox(height: 20),
-                _buildPolicyView(),
-                SizedBox(height: 20),
-                _buildLoginButton(),
-                SizedBox(height: 20),
-                _buildGuestLoginButton(),
-              ]
-          )
-      ),
+  String get navigatorTitle => '登录';
+
+  @override
+  Widget buildBody(BuildContext context) {
+
+    Get.put(LoginPageController());
+
+    return Container(
+        color: Colors.white,
+        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildAccountView(),
+              _buildPasswordView(),
+              SizedBox(height: 20),
+              _buildPolicyView(),
+              SizedBox(height: 20),
+              _buildLoginButton(),
+              SizedBox(height: 20),
+              _buildGuestLoginButton(),
+            ]
+        )
     );
   }
+
 
 
   _buildPasswordView() {
